@@ -30,6 +30,8 @@ public class BasicBallLogic : MonoBehaviour
     private int gravity;
     public int Gravity => gravity;
 
+    private Animator animatorMax;
+
 
     private Rigidbody2D Rigidbody { get; set; }
     //[SerializeField]
@@ -40,6 +42,8 @@ public class BasicBallLogic : MonoBehaviour
     private void Awake()
     {
         Rigidbody = this.GetComponent<Rigidbody2D>();
+
+        animatorMax = this.GetComponent<Animator>();
         if (this.gameObject.CompareTag("MaxSize"))
             ifInputDetect = true;
         else
@@ -86,6 +90,8 @@ public class BasicBallLogic : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && ifLand)
             {
                 ifLand = false;
+                animatorMax.SetBool("isLand", false);
+                animatorMax.SetTrigger("triggerJump");
                 Rigidbody.AddForce(force * forceMagnitude);
             }
 
@@ -117,7 +123,11 @@ public class BasicBallLogic : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Terrain"))
+        {
             ifLand = true;
+            animatorMax.SetBool("isLand", true);
+
+        }
     }
 
 }
