@@ -64,7 +64,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  forceMagnitude: 55
+  height: 2
+  jumpTime: 0.2
+  fallTime: 0.35
+  stagnationTime: 0.15
   ifInputDetect: 1
   ifLand: 1
   ifPipeEnterUnlocked: 0

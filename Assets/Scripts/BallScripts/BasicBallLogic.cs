@@ -13,10 +13,22 @@ public class BasicBallLogic : MonoBehaviour
     //private float jumpHeight;
 
     [SerializeField]
-    [Range(0, 100f)]
-    [Tooltip("The Magnitude of the force")]
-    private float forceMagnitude;
-    private Vector2 force = new Vector2(0, 10);
+    [Range(0, 4f)]
+    [Tooltip("Jump height")]
+    private float height;
+
+    [SerializeField]
+    [Range(0, 2f)]
+    private float jumpTime;
+
+    [SerializeField]
+    [Range(0, 1.5f)]
+    private float fallTime;
+
+    //空中停滞事件
+    [SerializeField]
+    [Range(0, 1f)]
+    private float stagnationTime;
 
     [SerializeField]
     public bool ifInputDetect = false;
@@ -90,9 +102,21 @@ public class BasicBallLogic : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && ifLand)
             {
                 ifLand = false;
+<<<<<<< Updated upstream
                 animatorMax.SetBool("isLand", false);
                 animatorMax.SetTrigger("triggerJump");
                 Rigidbody.AddForce(force * forceMagnitude);
+=======
+                this.transform.LeanMoveLocalY(this.transform.position.y + height, jumpTime)
+                    .setOnComplete(() =>
+                    {
+                        this.transform.LeanMoveLocalY(this.transform.position.y , stagnationTime);
+                    })
+                    .setOnComplete(() =>
+                    {
+                        this.transform.LeanMoveLocalY(this.transform.position.y - height, fallTime);
+                    });
+>>>>>>> Stashed changes
             }
 
             //执行进管道逻辑；
