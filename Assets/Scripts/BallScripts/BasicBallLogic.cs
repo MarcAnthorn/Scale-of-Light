@@ -34,6 +34,7 @@ public class BasicBallLogic : MonoBehaviour
     public bool ifInputDetect = false;
     [SerializeField]
     private bool ifLand = true;
+    
 
     public bool ifPipeEnterUnlocked = false;
 
@@ -102,21 +103,18 @@ public class BasicBallLogic : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && ifLand)
             {
                 ifLand = false;
-<<<<<<< Updated upstream
                 animatorMax.SetBool("isLand", false);
                 animatorMax.SetTrigger("triggerJump");
-                Rigidbody.AddForce(force * forceMagnitude);
-=======
+
                 this.transform.LeanMoveLocalY(this.transform.position.y + height, jumpTime)
                     .setOnComplete(() =>
-                    {
+                    { 
                         this.transform.LeanMoveLocalY(this.transform.position.y , stagnationTime);
                     })
                     .setOnComplete(() =>
                     {
                         this.transform.LeanMoveLocalY(this.transform.position.y - height, fallTime);
                     });
->>>>>>> Stashed changes
             }
 
             //执行进管道逻辑；
@@ -152,6 +150,11 @@ public class BasicBallLogic : MonoBehaviour
             animatorMax.SetBool("isLand", true);
 
         }
+    }
+
+    public void CancelOrResumeJump(bool _ifLand)
+    {
+        ifLand = _ifLand;
     }
 
 }

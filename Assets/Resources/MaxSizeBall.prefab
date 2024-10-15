@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1388503383546534169}
   - component: {fileID: 7094270341242675934}
   - component: {fileID: 8793322636151719632}
+  - component: {fileID: -7048367304827962331}
   m_Layer: 0
   m_Name: MaxSizeBall
   m_TagString: MaxSize
@@ -51,7 +52,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0.5
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 0.8
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -114,6 +115,7 @@ MonoBehaviour:
   height: 1
   jumpTime: 0.5
   fallTime: 0.25
+  stagnationTime: 0
   ifInputDetect: 1
   ifLand: 1
   ifPipeEnterUnlocked: 0
@@ -133,6 +135,27 @@ MonoBehaviour:
   gravity: 6
   virtualCamera: {fileID: 0}
   divideLock: 0
+--- !u!95 &-7048367304827962331
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278897878934624689}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6eaf2a446f3292e488c0c5841537d9ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5115272651193015884
 GameObject:
   m_ObjectHideFlags: 0

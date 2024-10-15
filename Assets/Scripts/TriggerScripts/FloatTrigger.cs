@@ -10,25 +10,55 @@ public class FloatTrigger : MonoBehaviour
     [Range(0, 1.5f)]
     private float floatTime;
 
-    private BoxCollider2D bc;
+    //外部关联一个漂浮的高度目标对象；
+    [SerializeField]
+    private Transform floatTarget;
+    private float targetYValue;
+
+    [SerializeField]
+    private bool isFall = false;
     private void Awake()
     {
         
     }
 
+    private BasicBallLogic nowBallScript;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if(collision.gameObject.CompareTag("MinSize"))
         {
+            //禁用当前的对象跳跃；
+            nowBallScript = collision.GetComponent<BasicBallLogic>();
+            nowBallScript.CancelOrResumeJump(false);
+
             //触发机关动画
 
-            //
-            collision.transform.LeanMoveLocalY(collision.gameObject.transform.position.y + 2, floatTime).setEase(LeanTweenType.easeInQuart)
+            //记录目标高度：
+            targetYValue = floatTarget.position.y;
+            collision.transform.LeanMoveLocalY(targetYValue, floatTime).setEase(LeanTweenType.easeInQuart)
             .setOnComplete(() =>
             {
-                
+                isFall = false;
             });
         }
 
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("MinSize") && !isFall)
+        {
+            collision.transform.position = new Vector3(collision.transform.position.x, targetYValue, collision.transform.position.z);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("MinSize"))
+        {
+            isFall = true;
+        }
     }
 }
