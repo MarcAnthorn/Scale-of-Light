@@ -18,7 +18,6 @@ public class LoadSceneButton : MonoBehaviour
         {
             UIManager.Instance.HidePanel<ChoosePanel>(ConfirmScene);
             
-
         });
     }
     public void LoadSceneProgress(float process)
@@ -31,7 +30,19 @@ public class LoadSceneButton : MonoBehaviour
         switch (btnSelf.name)
         {
             case "LevelOneButton":
-                LoadSceneManager.Instance.LoadSceneAsync("GameScene");
+                LoadSceneManager.Instance.LoadSceneAsync("GameScene1");
+                break;
+            case "LevelTwoButton":
+                LoadSceneManager.Instance.LoadSceneAsync("GameScene2");
+                break;
+            case "LevelThreeButton":
+                LoadSceneManager.Instance.LoadSceneAsync("GameScene3");
+                break;
+            case "LevelFourButton":
+                LoadSceneManager.Instance.LoadSceneAsync("GameScene4");
+                break;
+            case "LevelFiveButton":
+                LoadSceneManager.Instance.LoadSceneAsync("GameScene5");
                 break;
         }
     }
