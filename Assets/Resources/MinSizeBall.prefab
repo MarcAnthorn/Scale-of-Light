@@ -171,7 +171,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0.5
   m_AngularDrag: 0.05
-  m_GravityScale: 0.8
+  m_GravityScale: 1.4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -182,7 +182,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!114 &4529756631249203845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,11 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c6f264e5b2743f1997cd9787003855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 5
   height: 3
   jumpTime: 0.3
   fallTime: 0.35
-  stagnationTime: 0.25
+  stagnationTime: 0
   ifInputDetect: 1
   ifLand: 1
   ifPipeEnterUnlocked: 0

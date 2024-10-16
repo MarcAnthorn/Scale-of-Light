@@ -21,11 +21,7 @@ public class BasicBallLogic : MonoBehaviour
     [Range(0, 2f)]
     private float jumpTime;
 
-    [SerializeField]
-    [Range(0, 1.5f)]
-    private float fallTime;
-
-    //空中停滞事件
+    //空中停滞
     [SerializeField]
     [Range(0, 1f)]
     private float stagnationTime;
@@ -34,7 +30,15 @@ public class BasicBallLogic : MonoBehaviour
     public bool ifInputDetect = false;
     [SerializeField]
     private bool ifLand = true;
-    
+
+
+    //跳跃需要的力；
+    [SerializeField]
+    private Vector3 jumpForce;
+    float g = 9.81f; // 重力加速度
+
+
+
 
     public bool ifPipeEnterUnlocked = false;
 
@@ -55,7 +59,8 @@ public class BasicBallLogic : MonoBehaviour
     private void Awake()
     {
         Rigidbody = this.GetComponent<Rigidbody2D>();
-
+        //计算对象需要的力的大小；
+        jumpForce = new Vector3(0, Rigidbody.mass * Mathf.Sqrt(2 * g * Rigidbody.gravityScale * height), 0);
         animatorMax = this.GetComponent<Animator>();
         if (this.gameObject.CompareTag("MaxSize"))
             ifInputDetect = true;
@@ -82,7 +87,7 @@ public class BasicBallLogic : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        
     }
 
     private void InputDetect()
@@ -106,15 +111,7 @@ public class BasicBallLogic : MonoBehaviour
                 animatorMax.SetBool("isLand", false);
                 animatorMax.SetTrigger("triggerJump");
 
-                this.transform.LeanMoveLocalY(this.transform.position.y + height, jumpTime)
-                    .setOnComplete(() =>
-                    { 
-                        this.transform.LeanMoveLocalY(this.transform.position.y , stagnationTime);
-                    })
-                    .setOnComplete(() =>
-                    {
-                        this.transform.LeanMoveLocalY(this.transform.position.y - height, fallTime);
-                    });
+                Rigidbody.AddForce(jumpForce, ForceMode2D.Impulse);
             }
 
             //执行进管道逻辑；
