@@ -66,10 +66,10 @@ MonoBehaviour:
   speed: 4
   height: 2
   jumpTime: 0.2
-  fallTime: 0.35
   stagnationTime: 0.15
   ifInputDetect: 1
   ifLand: 1
+  jumpForce: {x: 0, y: 0, z: 0}
   ifPipeEnterUnlocked: 0
   gravity: 1
 --- !u!50 &441749557757012570

@@ -60,7 +60,7 @@ public class BasicBallLogic : MonoBehaviour
     {
         Rigidbody = this.GetComponent<Rigidbody2D>();
         //计算对象需要的力的大小；
-        jumpForce = new Vector3(0, Rigidbody.mass * Mathf.Sqrt(2 * g * Rigidbody.gravityScale * height), 0);
+        jumpForce = new Vector3(0, Rigidbody.mass * Mathf.Sqrt(2 * g * Rigidbody.gravityScale * (height + 1)), 0);
         animatorMax = this.GetComponent<Animator>();
         if (this.gameObject.CompareTag("MaxSize"))
             ifInputDetect = true;
