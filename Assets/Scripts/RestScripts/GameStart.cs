@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class GameStart : MonoBehaviour
 {
-    private MaxSizeBall initScript;
+    private MediumSizeBall initScript;
     // Start is called before the first frame update
     void Start()
     {
         //UIManager.Instance.ShowPanel<GameDurationPanel>();
         Debug.Log("Start Executed");
-        GameObject initBall = GameObject.Find("MaxSizeBall");
-        initScript = initBall.GetComponent<MaxSizeBall>();
+        GameObject initBall = GameObject.Find("MediumSizeBall");
+        initScript = initBall.GetComponent<MediumSizeBall>();
         initScript.LockDivideOrNot(false);
         EventHub.Instance.EventTrigger<Transform>("SwitchControlled", initBall.transform);
 
