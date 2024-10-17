@@ -95,10 +95,10 @@ public class BasicBallLogic : MonoBehaviour
 
     private void InputDetect()
     {
-        if (!Input.anyKeyDown && !Input.anyKey)
+        if (!Input.anyKeyDown && !Input.anyKey && animatorNowControlled != null)
             animatorNowControlled.SetBool("isIdle", true);
 
-        if (ifInputDetect && !MoveController.isInputLockedStatic)
+        if (ifInputDetect && !MoveController.isInputLockedStatic && animatorNowControlled != null)
         {
             if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {

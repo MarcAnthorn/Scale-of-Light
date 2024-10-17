@@ -14,6 +14,7 @@ public class QuitConfirmPanel : BasePanel
     {
         btnQuitConfirm.onClick.AddListener(() =>
         {
+            Time.timeScale = 1;
             UIManager.Instance.HidePanel<GameDurationPanel>();
             UIManager.Instance.HidePanel<QuitConfirmPanel>(LoadStartScene);
 
@@ -21,12 +22,16 @@ public class QuitConfirmPanel : BasePanel
 
         btnClose.onClick.AddListener(() =>
         {
+            Time.timeScale = 1;
+            MoveController.isInputLockedStatic = false;
             PanelEffects.Instance.PanelPopDown(this.transform);
         });
     }
 
     private void LoadStartScene()
     {
+    
+        MoveController.isInputLockedStatic = false;
         LoadSceneManager.Instance.LoadSceneAsync("StartScene");
     }
 }

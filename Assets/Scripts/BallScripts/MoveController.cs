@@ -15,6 +15,25 @@ public class MoveController : MonoBehaviour
 
     private bool isMaxSize;
 
+    //当前的QuitConfirmPanel的引用；
+    private GameObject panel;
+
+    //如果此时检测到玩家按下esp键，暂停游戏时间，以及弹出是否退出的Confirm面板
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            isInputLockedStatic = true;
+            panel = UIManager.Instance.ShowPanel<QuitConfirmPanel>().gameObject;
+            PanelEffects.Instance.PanelPopUp(panel.transform);
+            LeanTween.delayedCall(0.3f, () =>
+            {
+                Time.timeScale = 0;
+            });
+
+        }
+
+    }
 
     private void Awake()
     {
@@ -25,24 +44,18 @@ public class MoveController : MonoBehaviour
     private void OnEnable()
     {
         EventHub.Instance.AddEventListener<Transform>("SwitchControlled", SwitchControlled);
-        EventHub.Instance.AddEventListener("BeforeSwitchScene", BeforeSwitchScene);
+
         //EventHub.Instance.AddEventListener<Transform>("SwitchLookAt", SwitchLookAt);
     }
 
     private void OnDisable()
     {
         EventHub.Instance.RemoveEventListener<Transform>("SwitchControlled", SwitchControlled);
-        EventHub.Instance.RemoveEventListener("BeforeSwitchScene", BeforeSwitchScene);
+      
         //EventHub.Instance.RemoveEventListener<Transform>("SwitchLookAt", SwitchLookAt);
 
     }
 
-
-    //传出当前正在操作的对象的方法，用于外部在需要的时候知道当前场景正在活跃的对象是谁
-    private void BeforeSwitchScene()
-    {
-        
-    }
 
     private void SwitchControlled(Transform ball)
     {

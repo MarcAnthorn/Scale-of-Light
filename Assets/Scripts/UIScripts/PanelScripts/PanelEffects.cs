@@ -11,13 +11,13 @@ public class PanelEffects : SingletonBaseManager<PanelEffects>
     public void PanelPopUp(Transform _panelTransform)
     {
         panelTransform = _panelTransform;
-        panelTransform.LeanMoveLocalY(0, 0.6f).setEase(LeanTweenType.easeOutCirc);
+        panelTransform.LeanMoveLocalY(0, 0.3f).setEase(LeanTweenType.easeOutCirc);
     }
 
     public void PanelPopDown(Transform _panelTransform)
     {
         panelTransform = _panelTransform;
-        panelTransform.LeanMoveLocalY(-1100, 0.6f).setEase(LeanTweenType.easeOutCubic);
+        panelTransform.LeanMoveLocalY(-1100, 0.3f).setEase(LeanTweenType.easeOutCubic);
     }
 
     
