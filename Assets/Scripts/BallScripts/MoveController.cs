@@ -10,6 +10,9 @@ public class MoveController : MonoBehaviour
     private BasicBallLogic nowBallLogicScript;
     private BaseDivideBall nowDivideScript;
 
+    //全局唯一的静态变量，用于在特定的场合（如死亡时）取消所有的键盘输入；
+    public static bool isInputLockedStatic = false;
+
     private bool isMaxSize;
 
 
@@ -22,18 +25,24 @@ public class MoveController : MonoBehaviour
     private void OnEnable()
     {
         EventHub.Instance.AddEventListener<Transform>("SwitchControlled", SwitchControlled);
+        EventHub.Instance.AddEventListener("BeforeSwitchScene", BeforeSwitchScene);
         //EventHub.Instance.AddEventListener<Transform>("SwitchLookAt", SwitchLookAt);
     }
 
     private void OnDisable()
     {
         EventHub.Instance.RemoveEventListener<Transform>("SwitchControlled", SwitchControlled);
+        EventHub.Instance.RemoveEventListener("BeforeSwitchScene", BeforeSwitchScene);
         //EventHub.Instance.RemoveEventListener<Transform>("SwitchLookAt", SwitchLookAt);
 
     }
 
 
-
+    //传出当前正在操作的对象的方法，用于外部在需要的时候知道当前场景正在活跃的对象是谁
+    private void BeforeSwitchScene()
+    {
+        
+    }
 
     private void SwitchControlled(Transform ball)
     {

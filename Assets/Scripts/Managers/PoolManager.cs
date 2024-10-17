@@ -26,6 +26,12 @@ public class PoolData
     //提供方法：Push：用于轧入对象入池；
     public void Push(GameObject obj)
     {
+        if (obj == null)
+            Debug.LogError("当前希望push入对象栈的对象为空，请检查！");
+
+        if (objRoot == null)
+            Debug.LogError("当前希望挂载对象的父对象Root为空，请检查！");
+
         //开启优化，再建立父子关系；否则不建立
         if (isOptimized)
             obj.transform.SetParent(objRoot.transform);
@@ -114,6 +120,8 @@ public class PoolManager : SingletonBaseManager<PoolManager>
         if (poolRoot == null && isOptimized)
             poolRoot = new GameObject("Pool");   //此语句表示的是创建一个以“Pool”命名的空物体；
 
+        if (objToPool == null)
+            Debug.LogError("当前希望加入对象池的对象为空，请进行检查！");
         objToPool.SetActive(false);
 
         if (poolDictionary.ContainsKey(key))

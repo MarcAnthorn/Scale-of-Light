@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1388503383546534169}
   - component: {fileID: 7094270341242675934}
   - component: {fileID: 8793322636151719632}
-  - component: {fileID: -7048367304827962331}
   m_Layer: 0
   m_Name: MaxSizeBall
   m_TagString: MaxSize
@@ -96,9 +95,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.17}
+  m_Offset: {x: 0, y: -0.16}
   serializedVersion: 2
-  m_Radius: 0.71
+  m_Radius: 1.5
 --- !u!114 &7094270341242675934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,27 +134,6 @@ MonoBehaviour:
   gravity: 6
   virtualCamera: {fileID: 0}
   divideLock: 0
---- !u!95 &-7048367304827962331
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3278897878934624689}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6eaf2a446f3292e488c0c5841537d9ac, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5115272651193015884
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7841028639770081869}
   - component: {fileID: 3832897083065451586}
+  - component: {fileID: 2044165045869559420}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -229,7 +208,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7855474812802973731, guid: f8de229c6b1bb4b2c8c076429f10481c, type: 3}
+  m_Sprite: {fileID: -4547461299076945346, guid: de62f980479224dbe992758d87e393e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -240,3 +219,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2044165045869559420
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115272651193015884}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: d7aec9af114b44eb48df0e14ae47e831, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

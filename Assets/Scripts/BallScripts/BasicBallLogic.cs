@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class BasicBallLogic : MonoBehaviour
@@ -94,17 +95,25 @@ public class BasicBallLogic : MonoBehaviour
 
     private void InputDetect()
     {
-        if (ifInputDetect)
+        if (!Input.anyKeyDown && !Input.anyKey)
+            animatorNowControlled.SetBool("isIdle", true);
+
+        if (ifInputDetect && !MoveController.isInputLockedStatic)
         {
-            if (Input.GetKey(KeyCode.A))
+            if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
-                this.transform.rotation = Quaternion.Euler(0, 180, 0);
-                this.transform.Translate(speed * Time.deltaTime * Vector3.right);
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                this.transform.rotation = Quaternion.Euler(0, 0, 0);
-                this.transform.Translate(speed * Time.deltaTime * Vector3.right);
+                animatorNowControlled.SetBool("isIdle", false);
+                animatorNowControlled.SetBool("isMove", true);
+                if (Input.GetKey(KeyCode.A))
+                {
+                    this.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    this.transform.Translate(speed * Time.deltaTime * Vector3.right);
+                }
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    this.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    this.transform.Translate(speed * Time.deltaTime * Vector3.right);            
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && ifLand)

@@ -127,5 +127,11 @@ public class SwitchManager : SingletonBaseManager<SwitchManager>
         }
     }
 
+    //清空当前的所有球下标，保证在重载场景的时候下标是从0开始的；
+    public void ResetIndex()
+    {
+        ballIndex = 0;
+    }
+
 }
 

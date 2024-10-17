@@ -10,7 +10,7 @@ public class GameStart : MonoBehaviour
     {
         //UIManager.Instance.ShowPanel<GameDurationPanel>();
         Debug.Log("Start Executed");
-        GameObject initBall = GameObject.Find("MediumSizeBall");
+        GameObject initBall = GameObject.Find("MediumSizeBall0");
         initScript = initBall.GetComponent<MediumSizeBall>();
         initScript.LockDivideOrNot(false);
         EventHub.Instance.EventTrigger<Transform>("SwitchControlled", initBall.transform);
