@@ -218,6 +218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89187090b0087490b895aa21dc619df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 4782968682033969363}
+  spawnOffset: {x: 0, y: 0, z: 0}
+  floatTime: 0
   spawnDelayTime: 1.45
   virtualCamera: {fileID: 0}
   spawnPoint: {fileID: 4301967348662821827}

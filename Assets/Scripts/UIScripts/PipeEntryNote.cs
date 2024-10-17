@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PipeEntryNote : BaseNote
 {
+
     protected void OnEnable()
     {
         EventHub.Instance.AddEventListener<GameObject>("RevealPipeNote", RevealPipeNote);

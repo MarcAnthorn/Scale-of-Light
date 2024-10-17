@@ -20,6 +20,9 @@ public class TranslatePipe : BasePipe
 
     private Transform fakeLookAt;
 
+    //提示性UI对象；
+    private GameObject note;
+
     //确认管道的进入逻辑；
     protected override void PipeTriggerEnter(Transform ballTransform)
     {
@@ -45,14 +48,42 @@ public class TranslatePipe : BasePipe
     //触发管道提示UI；
     protected override void PipeNotification()
     {
-        if (GameObject.Find("PipeEntryNote") != null)
+        //只有当进入了某个管道的提示范围，才会让该管道监听进入管道事件；
+        EventHub.Instance.AddEventListener<Transform>("PipeTriggerEnter", PipeTriggerEnter);
+
+        if (note != null)
             return;
-        GameObject note = PoolManager.Instance.SpawnFromPool("PipeEntryNote", Vector3.zero, Quaternion.identity);
-        note.gameObject.name = "PipeEntryNote";
-        EventHub.Instance.EventTrigger<GameObject>("RevealPipeNote", note);
+        note = PoolManager.Instance.SpawnFromPool("PipeEntryNote", Vector3.zero, Quaternion.identity);
+        RevealPipeNote();
         Debug.Log("InputDetect is opened");
         EventHub.Instance.EventTrigger<bool>("UnlockOrLockPipeEnter", true);
     }
+
+    //显示管道提示性UI的方法；
+    private void RevealPipeNote()
+    {
+        note.transform.position = target.position + spawnOffset;
+
+        sr = note.GetComponent<SpriteRenderer>();
+
+        //重置alpha值为0；
+        currentColor = sr.color;
+        currentColor.a = 0;
+        sr.color = currentColor;
+
+        LeanTween.value(note, currentColor.a, 1, 0.55f)
+          .setOnUpdate((float alpha) =>
+          {
+              // 在插值过程中更新 SpriteRenderer 的 Alpha 值
+              currentColor.a = alpha;
+              sr.color = currentColor;
+          }).setOnComplete(() =>
+          {
+              note.transform.LeanMoveLocalY(target.position.y, floatTime).setEase(LeanTweenType.easeInOutCirc).setLoopPingPong();
+          });
+
+    }
+
 
     protected override void PipeTriggerExit()
     {
@@ -64,14 +95,36 @@ public class TranslatePipe : BasePipe
                 return;
         }
 
-        EventHub.Instance.EventTrigger("HidePipeNote");
-        Debug.Log("InputDetect is closed");
+        HidePipeNote();
         EventHub.Instance.EventTrigger<bool>("UnlockOrLockPipeEnter", false);
+
+        //当前范围没有对象了，才移除事件的监听；
+        EventHub.Instance.RemoveEventListener<Transform>("PipeTriggerEnter", PipeTriggerEnter);
+
     }
 
-    private void Awake()
+    //隐藏提示性UI的方法
+    protected void HidePipeNote()
     {
-        EventHub.Instance.AddEventListener<Transform>("PipeTriggerEnter", PipeTriggerEnter);
+        LeanTween.value(note, currentColor.a, 0, 0.55f)
+         .setOnUpdate((float alpha) =>
+         {
+             // 在插值过程中更新 SpriteRenderer 的 Alpha 值
+             currentColor.a = alpha;
+             sr.color = currentColor;
+         }).setOnComplete(() =>
+         {
+             LeanTween.cancel(note);
+             //销毁而不是回池；
+             Destroy(note);
+         });
+
+    }
+
+
+    private void OnDisable()
+    {
+        EventHub.Instance.RemoveEventListener<Transform>("PipeTriggerEnter", PipeTriggerEnter);
     }
 
 
