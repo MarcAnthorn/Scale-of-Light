@@ -96,9 +96,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.17}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.71
 --- !u!114 &7094270341242675934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,10 +114,10 @@ MonoBehaviour:
   speed: 3
   height: 1
   jumpTime: 0.5
-  fallTime: 0.25
   stagnationTime: 0
   ifInputDetect: 1
   ifLand: 1
+  jumpForce: {x: 0, y: 0, z: 0}
   ifPipeEnterUnlocked: 0
   gravity: 2
 --- !u!114 &8793322636151719632
@@ -229,12 +229,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.33490568, b: 0.3415533, a: 1}
+  m_Sprite: {fileID: -7855474812802973731, guid: f8de229c6b1bb4b2c8c076429f10481c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.7333333, y: 1.73}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

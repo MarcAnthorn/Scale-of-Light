@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,6 +38,11 @@ public class EventInfoNoPara : EventInfoBaseClass
 public class EventHub : SingletonBaseManager<EventHub>
 {
     private EventHub() { }
+
+    internal void EventTrigger<T>()
+    {
+        throw new NotImplementedException();
+    }
 
     //如果事件中心模块这样定义，同时字典这样写：
     //public class EventHub<T> : SingletonBaseManager<EventHub<T>>

@@ -13,6 +13,7 @@ public class GameStart : MonoBehaviour
         GameObject initBall = GameObject.Find("MaxSizeBall");
         initScript = initBall.GetComponent<MaxSizeBall>();
         initScript.LockDivideOrNot(false);
+        EventHub.Instance.EventTrigger<Transform>("SwitchControlled", initBall.transform);
 
 
     }

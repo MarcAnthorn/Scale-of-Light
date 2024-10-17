@@ -37,6 +37,10 @@ public class MoveController : MonoBehaviour
 
     private void SwitchControlled(Transform ball)
     {
+
+        //切换之后，通过事件中心传出当前的控制对象的动画状态机，便于外部调用对应的逻辑；
+        EventHub.Instance.EventTrigger<Animator>("FetchAnimatorNowControlled", ball.GetComponentInChildren<Animator>());
+
         if (nowControlled == null)
         {
             nowBallLogicScript = ball.GetComponent<BasicBallLogic>();

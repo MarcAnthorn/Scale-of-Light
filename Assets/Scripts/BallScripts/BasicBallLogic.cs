@@ -47,7 +47,7 @@ public class BasicBallLogic : MonoBehaviour
     private int gravity;
     public int Gravity => gravity;
 
-    private Animator animatorMax;
+    private Animator animatorNowControlled;
 
 
     private Rigidbody2D Rigidbody { get; set; }
@@ -61,7 +61,6 @@ public class BasicBallLogic : MonoBehaviour
         Rigidbody = this.GetComponent<Rigidbody2D>();
         //计算对象需要的力的大小；
         jumpForce = new Vector3(0, Rigidbody.mass * Mathf.Sqrt(2 * g * Rigidbody.gravityScale * (height + 1)), 0);
-        animatorMax = this.GetComponent<Animator>();
         if (this.gameObject.CompareTag("MaxSize"))
             ifInputDetect = true;
         else
@@ -73,11 +72,14 @@ public class BasicBallLogic : MonoBehaviour
     private void OnEnable()
     {
         EventHub.Instance.AddEventListener<bool>("UnlockOrLockPipeEnter", UnlockOrLockPipeEnter);
+        EventHub.Instance.AddEventListener<Animator>("FetchAnimatorNowControlled", FetchAnimatorNowControlled);
+        
     }
 
     private void OnDisable()
     {
         EventHub.Instance.RemoveEventListener<bool>("UnlockOrLockPipeEnter", UnlockOrLockPipeEnter);
+        EventHub.Instance.RemoveEventListener<Animator>("FetchAnimatorNowControlled", FetchAnimatorNowControlled);
     }
 
     private void Update()
@@ -108,8 +110,8 @@ public class BasicBallLogic : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && ifLand)
             {
                 ifLand = false;
-                animatorMax.SetBool("isLand", false);
-                animatorMax.SetTrigger("triggerJump");
+                animatorNowControlled.SetBool("isLand", false);
+                animatorNowControlled.SetTrigger("triggerJump");
 
                 Rigidbody.AddForce(jumpForce, ForceMode2D.Impulse);
             }
@@ -144,7 +146,7 @@ public class BasicBallLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("Terrain"))
         {
             ifLand = true;
-            animatorMax.SetBool("isLand", true);
+            animatorNowControlled.SetBool("isLand", true);
 
         }
     }
@@ -154,4 +156,8 @@ public class BasicBallLogic : MonoBehaviour
         ifLand = _ifLand;
     }
 
+    public void FetchAnimatorNowControlled(Animator _animator)
+    {
+        animatorNowControlled = _animator;
+    }
 }
