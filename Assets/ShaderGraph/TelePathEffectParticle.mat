@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DeathParticle
+  m_Name: TelePathEffectParticle
   m_Shader: {fileID: -6465566751694194690, guid: 61528d5869cddf245920fb44b205ea86, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -51,5 +51,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 3.316613, g: 0.33816445, b: 0, a: 0}
+    - _Color: {r: 3.5059974, g: 0.15435176, b: 1.9930141, a: 0}
   m_BuildTextureStacks: []
