@@ -9,6 +9,7 @@ public class MoveController : MonoBehaviour
     //private CinemachineVirtualCamera virtualCamera;
     private BasicBallLogic nowBallLogicScript;
     private BaseDivideBall nowDivideScript;
+    private Rigidbody2D nowrb;
 
     //全局唯一的静态变量，用于在特定的场合（如死亡时）取消所有的键盘输入；
     public static bool isInputLockedStatic = false;
@@ -44,6 +45,7 @@ public class MoveController : MonoBehaviour
     private void OnEnable()
     {
         EventHub.Instance.AddEventListener<Transform>("SwitchControlled", SwitchControlled);
+        EventHub.Instance.AddEventListener("BeforeSwitchScene", BeforeSwitchScene);
 
         //EventHub.Instance.AddEventListener<Transform>("SwitchLookAt", SwitchLookAt);
     }
@@ -51,7 +53,8 @@ public class MoveController : MonoBehaviour
     private void OnDisable()
     {
         EventHub.Instance.RemoveEventListener<Transform>("SwitchControlled", SwitchControlled);
-      
+        EventHub.Instance.RemoveEventListener("BeforeSwitchScene", BeforeSwitchScene);
+
         //EventHub.Instance.RemoveEventListener<Transform>("SwitchLookAt", SwitchLookAt);
 
     }
@@ -118,7 +121,32 @@ public class MoveController : MonoBehaviour
         }
 
     }
-  
+
+    private void BeforeSwitchScene()
+    {
+        nowrb = nowBallLogicScript.gameObject.GetComponent<Rigidbody2D>();
+        nowrb.constraints = RigidbodyConstraints2D.FreezePosition;
+        switch (nowBallLogicScript.gameObject.tag)
+        {
+            case "MaxSize":
+                SpawnParticals("Effect/DeathEffMax", nowBallLogicScript.gameObject.transform.position);
+                break;
+            case "MediumSize":
+                SpawnParticals("Effect/DeathEffMedium", nowBallLogicScript.gameObject.transform.position);
+                break;
+            case "MinSize":
+                SpawnParticals("Effect/DeathEffMin", nowBallLogicScript.gameObject.transform.position);
+                break;
+        }
+
+    }
+
+    private void SpawnParticals(string key, Vector3 _position)
+    {
+        PoolManager.Instance.SpawnFromPool(key).gameObject.transform.position = _position; 
+    }
+
+
     //private void SwitchLookAt(Transform target)
     //{
     //    virtualCamera.Follow = target;
