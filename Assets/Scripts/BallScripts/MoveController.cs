@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using DG.Tweening;
 
 public class MoveController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class MoveController : MonoBehaviour
     private BasicBallLogic nowBallLogicScript;
     private BaseDivideBall nowDivideScript;
     private Rigidbody2D nowrb;
+
+    //材质变量
+    private Material _material;
 
     //全局唯一的静态变量，用于在特定的场合（如死亡时）取消所有的键盘输入；
     public static bool isInputLockedStatic = false;
@@ -40,6 +44,14 @@ public class MoveController : MonoBehaviour
     {
         //virtualCamera = this.GetComponent<CinemachineVirtualCamera>();
       
+    }
+
+    private void Start()
+    {
+        //获取对象材质
+
+        _material = nowBallLogicScript.gameObject.GetComponentInChildren<Renderer>().material;
+        Debug.Log(_material == null);
     }
 
     private void OnEnable()
@@ -143,6 +155,11 @@ public class MoveController : MonoBehaviour
 
     private void SpawnParticals(string key, Vector3 _position)
     {
+
+        // 修改透明度
+        _material.DOFloat(-1, "_Strength", 0.8f);
+
+        //创建粒子特效
         PoolManager.Instance.SpawnFromPool(key).gameObject.transform.position = _position; 
     }
 
