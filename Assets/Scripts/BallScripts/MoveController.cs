@@ -46,13 +46,6 @@ public class MoveController : MonoBehaviour
       
     }
 
-    private void Start()
-    {
-        //获取对象材质
-
-        _material = nowBallLogicScript.gameObject.GetComponentInChildren<Renderer>().material;
-        Debug.Log(_material == null);
-    }
 
     private void OnEnable()
     {
@@ -77,10 +70,15 @@ public class MoveController : MonoBehaviour
 
         //切换之后，通过事件中心传出当前的控制对象的动画状态机，便于外部调用对应的逻辑；
         EventHub.Instance.EventTrigger<Animator>("FetchAnimatorNowControlled", ball.GetComponentInChildren<Animator>());
+       
 
         if (nowControlled == null)
         {
             nowBallLogicScript = ball.GetComponent<BasicBallLogic>();
+
+            //获取当前的对象材质；
+            _material = nowBallLogicScript.gameObject.GetComponentInChildren<Renderer>().material;
+
             nowControlled = ball;
             nowBallLogicScript.ifInputDetect = true;
           
@@ -98,6 +96,9 @@ public class MoveController : MonoBehaviour
             Debug.Log("Now Controlled Ball is " + nowBallLogicScript.gameObject.name);
             nowBallLogicScript.ifInputDetect = true;
             //virtualCamera.Follow = nowControlled;
+
+            //获取当前的对象材质；
+            _material = nowBallLogicScript.gameObject.GetComponentInChildren<Renderer>().material;
         }
 
         //处理分裂的逻辑；

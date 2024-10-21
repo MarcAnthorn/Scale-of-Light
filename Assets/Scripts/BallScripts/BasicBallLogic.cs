@@ -96,7 +96,10 @@ public class BasicBallLogic : MonoBehaviour
     private void InputDetect()
     {
         if (!Input.anyKeyDown && !Input.anyKey && animatorNowControlled != null)
+        {
             animatorNowControlled.SetBool("isIdle", true);
+            animatorNowControlled.SetBool("isMove", false);
+        }
 
         if (ifInputDetect && !MoveController.isInputLockedStatic && animatorNowControlled != null)
         {
