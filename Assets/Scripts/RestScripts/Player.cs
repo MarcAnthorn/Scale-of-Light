@@ -18,15 +18,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            Die();
-        }
 
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            _material.DOColor(Color.black, "_SlimeColor", 0.5f);
-        }
     }
 
     void Die()

@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MaxSizeBall
       objectReference: {fileID: 0}
+    - target: {fileID: 3832897083065451586, guid: d9a98f4306bf5462b984f95e01f7942e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 421140d70d4406e42abb191a568993c6, type: 2}
     - target: {fileID: 7094270341242675934, guid: d9a98f4306bf5462b984f95e01f7942e, type: 3}
       propertyPath: ifLand
       value: 0
@@ -194,6 +198,10 @@ PrefabInstance:
     - target: {fileID: 7094270341242675934, guid: d9a98f4306bf5462b984f95e01f7942e, type: 3}
       propertyPath: stagnationTime
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841028639770081869, guid: d9a98f4306bf5462b984f95e01f7942e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.68
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1431,6 +1439,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1228781639612661490, guid: 2ae1ab840d8c22b48b04a66a9adba4c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847459312949629356, guid: 2ae1ab840d8c22b48b04a66a9adba4c6, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847459312949629356, guid: 2ae1ab840d8c22b48b04a66a9adba4c6, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
