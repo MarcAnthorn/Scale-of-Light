@@ -56,6 +56,8 @@ private void OnTriggerStay2D(Collider2D collision)
         if (collision.gameObject.CompareTag("MinSize") && !isFall)
         {
             collision.transform.position = new Vector3(collision.transform.position.x, targetYValue, collision.transform.position.z);
+
+
             // 获取当前对象的刚体
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
 
