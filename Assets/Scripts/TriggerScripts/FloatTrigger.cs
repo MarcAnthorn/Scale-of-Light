@@ -17,9 +17,11 @@ public class FloatTrigger : MonoBehaviour
 
     [SerializeField]
     private bool isFall = false;
+
+    private int ballCounts = 0;
     private void Awake()
     {
-        
+        ballCounts = 0;
     }
 
     private BasicBallLogic nowBallScript;
@@ -42,15 +44,23 @@ public class FloatTrigger : MonoBehaviour
             {
                 isFall = false;
             });
+
+            ballCounts++;
         }
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+
+private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("MinSize") && !isFall)
         {
             collision.transform.position = new Vector3(collision.transform.position.x, targetYValue, collision.transform.position.z);
+            // 获取当前对象的刚体
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+
+            // 停止所有的力和速度
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -58,7 +68,9 @@ public class FloatTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MinSize"))
         {
-            isFall = true;
+            ballCounts--;
+            if(ballCounts == 0)
+                isFall = true;
         }
     }
 }
