@@ -24,6 +24,12 @@ public class MediumSizeBall : BaseDivideBall
         divideLock = isLock;
     }
 
+    //这个是由事件中心发布的是否开启分裂锁，或者是关闭；
+    private void LockDivide(bool _isLock)
+    {
+        divideLock = _isLock;
+    }
+
 
     private void Awake()
     {
@@ -57,12 +63,14 @@ public class MediumSizeBall : BaseDivideBall
         sr.color = color;
 
         EventHub.Instance.AddEventListener("MediumDivide", MediumDivide);
+        EventHub.Instance.AddEventListener<bool>("LockDivide", LockDivide);
     }
 
     private void OnDisable()
     {
         SwitchManager.Instance.DeleteBallFromQueue(this.gameObject);
         EventHub.Instance.RemoveEventListener("MediumDivide", MediumDivide);
+        EventHub.Instance.RemoveEventListener<bool>("LockDivide", LockDivide);
     }
 
    

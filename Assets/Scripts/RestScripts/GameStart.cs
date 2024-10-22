@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
@@ -16,8 +17,18 @@ public class GameStart : MonoBehaviour
         Debug.Log("Start Executed");
         GameObject initBall = GameObject.Find("MediumSizeBall0");
         initScript = initBall.GetComponent<MediumSizeBall>();
-        initScript.LockDivideOrNot(false);
         EventHub.Instance.EventTrigger<Transform>("SwitchControlled", initBall.transform);
+        if (SceneManager.GetActiveScene().name == "GameScene1")
+        {
+            Debug.Log("Locked");
+            initScript.LockDivideOrNot(true);
+        }
+        else
+        {
+            initScript.LockDivideOrNot(false);
+        }
+            
+        
 
 
     }
