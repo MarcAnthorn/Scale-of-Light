@@ -11,6 +11,24 @@ public class NoteBoardTrigger : MonoBehaviour
 
     [SerializeField]
     private Transform noteTarget;
+
+    private bool isUILocked = true;
+    private void Update()
+    {
+       if(!isUILocked)
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Debug.Log("Guide UI is triggered!");
+                UIManager.Instance.ShowPanel<GuidePanel>();
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                UIManager.Instance.HidePanel<GuidePanel>();
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("MediumSize"))
@@ -23,22 +41,14 @@ public class NoteBoardTrigger : MonoBehaviour
             noteRenderer = note.GetComponent<SpriteRenderer>();
 
             LeanTween.value(note, EnableUpdateAlpha, 0f, 1f, 0.4f);
-
+            isUILocked = false;
 
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            UIManager.Instance.ShowPanel<GuidePanel>();
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            UIManager.Instance.HidePanel<GuidePanel>();
-        }
+       
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -51,7 +61,8 @@ public class NoteBoardTrigger : MonoBehaviour
                 //隐藏提示性note:
                 PoolManager.Instance.ReturnToPool("Note", note);
             });
-            
+
+            isUILocked = true;
             
         }
     }

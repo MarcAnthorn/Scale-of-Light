@@ -43,7 +43,7 @@ Material:
     m_Floats:
     - _Strength: 1
     - _Strenth: 1
-    - _Thickness: 0.001
+    - _Thickness: 0
     m_Colors:
     - _OutLineColor: {r: 0, g: 0.9965575, b: 1, a: 1}
   m_BuildTextureStacks: []

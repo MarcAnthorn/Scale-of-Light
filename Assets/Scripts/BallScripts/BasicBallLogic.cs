@@ -110,7 +110,7 @@ public class BasicBallLogic : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Space) && ifLand)
                 {
-                    Debug.Log("Trigger!");
+                    ifLand = false;
                     animatorNowControlled.SetBool("isLand", false);
                     animatorNowControlled.SetTrigger("triggerDashJump");
 
