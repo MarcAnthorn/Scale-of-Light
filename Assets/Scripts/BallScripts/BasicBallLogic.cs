@@ -107,6 +107,16 @@ public class BasicBallLogic : MonoBehaviour
             {
                 animatorNowControlled.SetBool("isIdle", false);
                 animatorNowControlled.SetBool("isMove", true);
+
+                if (Input.GetKeyDown(KeyCode.Space) && ifLand)
+                {
+                    Debug.Log("Trigger!");
+                    animatorNowControlled.SetBool("isLand", false);
+                    animatorNowControlled.SetTrigger("triggerDashJump");
+
+                    Rigidbody.AddForce(jumpForce, ForceMode2D.Impulse);
+                }
+
                 if (Input.GetKey(KeyCode.A))
                 {
                     this.transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -155,12 +165,14 @@ public class BasicBallLogic : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Terrain"))
+        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("MaxSize") || collision.gameObject.CompareTag("MediumSize") || collision.gameObject.CompareTag("MinSize"))
         {
             ifLand = true;
             animatorNowControlled.SetBool("isLand", true);
 
         }
+
+   
     }
 
     public void CancelOrResumeJump(bool _ifLand)

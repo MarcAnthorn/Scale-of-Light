@@ -24,6 +24,12 @@ public class MediumSizeBall : BaseDivideBall
         divideLock = isLock;
     }
 
+    //这个是由事件中心发布的是否开启分裂锁，或者是关闭；
+    private void LockDivide(bool _isLock)
+    {
+        divideLock = _isLock;
+    }
+
 
     private void Awake()
     {
@@ -57,12 +63,14 @@ public class MediumSizeBall : BaseDivideBall
         sr.color = color;
 
         EventHub.Instance.AddEventListener("MediumDivide", MediumDivide);
+        EventHub.Instance.AddEventListener<bool>("LockDivide", LockDivide);
     }
 
     private void OnDisable()
     {
         SwitchManager.Instance.DeleteBallFromQueue(this.gameObject);
         EventHub.Instance.RemoveEventListener("MediumDivide", MediumDivide);
+        EventHub.Instance.RemoveEventListener<bool>("LockDivide", LockDivide);
     }
 
    
@@ -83,8 +91,20 @@ public class MediumSizeBall : BaseDivideBall
                childLeft = SwitchManager.Instance.AddNewMinToQueue(this.transform.position);
                childRight = SwitchManager.Instance.AddNewMinToQueue(this.transform.position);
 
-               childLeft.transform.LeanMoveX(this.transform.position.x - 0.7f, this.transform.position.y + 0.8f);
-               childRight.transform.LeanMoveX(this.transform.position.x + 0.7f, this.transform.position.y + 0.8f);
+               // 获取Player层的层级索引
+               int layerPlayer = LayerMask.NameToLayer("Player");
+               // 禁用这两个层之间的力的作用（仍然进行碰撞检测）
+               Physics2D.IgnoreLayerCollision(layerPlayer, layerPlayer, true);
+
+               childLeft.transform.LeanMoveX(this.transform.position.x - 1f, 0.2f);
+               childRight.transform.LeanMoveX(this.transform.position.x + 1f, 0.2f);
+               LeanTween.delayedCall( 0.2f, () =>
+               {
+                   Physics2D.IgnoreLayerCollision(layerPlayer, layerPlayer, false);
+               });
+
+               childLeft.transform.LeanMoveX(this.transform.position.x - 0.7f, 0.2f);
+               childRight.transform.LeanMoveX(this.transform.position.x + 0.7f, 0.2f);
                EventHub.Instance.EventTrigger<Transform>("SwitchControlled", childRight.transform);
                PoolManager.Instance.ReturnToPool("MaxSizeBall", this.gameObject);
 
