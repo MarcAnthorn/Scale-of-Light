@@ -107,6 +107,16 @@ public class BasicBallLogic : MonoBehaviour
             {
                 animatorNowControlled.SetBool("isIdle", false);
                 animatorNowControlled.SetBool("isMove", true);
+
+                if (Input.GetKeyDown(KeyCode.Space) && ifLand)
+                {
+                    Debug.Log("Trigger!");
+                    animatorNowControlled.SetBool("isLand", false);
+                    animatorNowControlled.SetTrigger("triggerDashJump");
+
+                    Rigidbody.AddForce(jumpForce, ForceMode2D.Impulse);
+                }
+
                 if (Input.GetKey(KeyCode.A))
                 {
                     this.transform.rotation = Quaternion.Euler(0, 180, 0);
