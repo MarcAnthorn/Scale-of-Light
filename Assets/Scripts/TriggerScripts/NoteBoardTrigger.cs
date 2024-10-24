@@ -33,8 +33,7 @@ public class NoteBoardTrigger : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("MediumSize"))
         {
-            //当对象进入了再开启分裂锁：
-            EventHub.Instance.EventTrigger<bool>("LockDivide", false);
+        
             //显示提示性note:
             note = PoolManager.Instance.SpawnFromPool("Note");
             note.transform.position = this.transform.position + offset;

@@ -21,7 +21,9 @@ public class SoundEffectManager : SingletonBaseManager<SoundEffectManager>
     //使用对象池解决音效的删除和增添问题；
     //由于对象池需要从预设体中进行实例化取用对象，我们需要制造预设体：soundObj;其中挂载AudioSource组件；
 
-    private bool soundRemove = false;
+    //是否对当前场景的播放完毕的音效对象进行移除；
+    //默认是移除的；
+    private bool soundRemove = true;
 
     private float musicVolume = 0.5f;
     private float soundEffectVolume = 0.5f;
@@ -111,6 +113,7 @@ public class SoundEffectManager : SingletonBaseManager<SoundEffectManager>
                 PoolManager.Instance.ReturnToPool("Sound/soundObj", soundList[i].gameObject);
                 soundList.RemoveAt(i);
             }
+         
         }
     }
 

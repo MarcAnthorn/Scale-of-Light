@@ -31,6 +31,7 @@ public class ButtonInteract : MonoBehaviour
         entryEnter.eventID = EventTriggerType.PointerEnter;
         entryEnter.callback.AddListener((data) =>
         {
+            SoundEffectManager.Instance.PlaySoundEffect("Sound/ButtonEntry");
             transform.LeanScale(transformVector, 0.4f);
         });
         trigger.triggers.Add(entryEnter);
@@ -47,10 +48,12 @@ public class ButtonInteract : MonoBehaviour
     //点击按钮之后的动态反馈
     private void ClickTransform()
     {
+      
         btnSelf = this.GetComponent<Button>();
         btnSelf.onClick.AddListener(() =>
         {
-            if(!btnSelf.gameObject.name.Equals("GameStartButton") && !btnSelf.gameObject.name.Equals("BackButton"))
+            SoundEffectManager.Instance.PlaySoundEffect("Sound/ButtonClickConfirm");
+            if (!btnSelf.gameObject.name.Equals("GameStartButton") && !btnSelf.gameObject.name.Equals("BackButton"))
             {
                 btnSelf.interactable = false;
                 LeanTween.delayedCall(0.5f, () => {
@@ -63,6 +66,7 @@ public class ButtonInteract : MonoBehaviour
                 switch (this.gameObject.name)
                 {
                     case "SettingButton":
+                        SoundEffectManager.Instance.PlaySoundEffect("Sound/PanelRevealVer1");
                         Debug.Log("SettingButtonlogic executed");
                         EventHub.Instance.EventTrigger("SettingPanelPopUp");
                         break;
@@ -70,6 +74,7 @@ public class ButtonInteract : MonoBehaviour
                         Debug.Log("QuitButtonlogic executed");
                         break;
                     case "AboutButton":
+                        SoundEffectManager.Instance.PlaySoundEffect("Sound/PanelRevealVer1");
                         Debug.Log("AboutButtonlogic executed");
                         break;
                     default:

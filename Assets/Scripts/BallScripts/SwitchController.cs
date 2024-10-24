@@ -14,4 +14,6 @@ public class SwitchController : MonoBehaviour
             EventHub.Instance.EventTrigger<Transform>("SwitchControlled", nowBall.transform);
         }
     }
+
+    //每次
 }

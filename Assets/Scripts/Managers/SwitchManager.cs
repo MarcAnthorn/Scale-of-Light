@@ -10,6 +10,12 @@ public class SwitchManager : SingletonBaseManager<SwitchManager>
     public Queue<GameObject> ballQueue = new Queue<GameObject>();
     private bool ifFind = false;
 
+    //实现一个重置ballIndex的方法：
+    public void ResetBallIndex()
+    {
+        ballIndex = 0;
+    }
+
     //向队列中添加一个MinSizeBall
     public GameObject AddNewMinToQueue(Vector3 _position)
     {
