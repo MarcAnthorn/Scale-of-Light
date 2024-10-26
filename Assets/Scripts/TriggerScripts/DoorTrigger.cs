@@ -20,7 +20,7 @@ public class DoorTrigger : MonoBehaviour
     {
         //播放机关门的开启动画
         Debug.Log("The Door Is Opened");
-        //this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
 
