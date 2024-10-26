@@ -12,6 +12,7 @@ public class SettingPanel : BasePanel
     {
         btnClose.onClick.AddListener(() =>
         {
+            SoundEffectManager.Instance.PlaySoundEffect("Sound/PanelRevealVer1");
             PanelEffects.Instance.PanelPopDown(this.transform);
         });
     }

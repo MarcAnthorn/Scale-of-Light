@@ -16,7 +16,7 @@ ScriptedImporter:
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapsPreserveCoverage: 0
@@ -37,7 +37,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 1
+    spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 300
@@ -55,8 +55,8 @@ ScriptedImporter:
     flipbookColumns: 0
     ignorePngGamma: 0
     cookieMode: 0
-    filterMode: 1
-    aniso: 1
+    filterMode: 0
+    aniso: 10
     mipBias: 0
     wrapU: 0
     wrapV: 0
@@ -149,9 +149,9 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 4969
+      y: 4972
       width: 566
-      height: 527
+      height: 524
     spriteID: cb1e76449a65344588cc08743bc4d559
     spriteBone: []
     spriteOutline: []

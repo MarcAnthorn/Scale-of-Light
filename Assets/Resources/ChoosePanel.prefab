@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4464644391689487568}
   - component: {fileID: 4743376299613188264}
   - component: {fileID: 9170606263999833075}
+  - component: {fileID: 5085335060307724137}
   m_Layer: 5
   m_Name: LevelThreeButton
   m_TagString: Untagged
@@ -134,6 +135,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9128e41af468f4387ac745ef7e79deb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5085335060307724137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126377002078231965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &495945040401753351
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +322,7 @@ GameObject:
   - component: {fileID: 4536741936875329293}
   - component: {fileID: 3225493651902248076}
   - component: {fileID: 106260816583460539}
+  - component: {fileID: 440152724078060308}
   m_Layer: 5
   m_Name: LevelTwoButton
   m_TagString: Untagged
@@ -429,6 +444,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9128e41af468f4387ac745ef7e79deb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &440152724078060308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721017059937580357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &2769444332047857142
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +604,7 @@ GameObject:
   - component: {fileID: 1851106629191783725}
   - component: {fileID: 3781997695450614695}
   - component: {fileID: 2348937760068092657}
+  - component: {fileID: 8343439780475472729}
   m_Layer: 5
   m_Name: LevelFiveButton
   m_TagString: Untagged
@@ -697,6 +726,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9128e41af468f4387ac745ef7e79deb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8343439780475472729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3431725361080264156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &3855577978641037393
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +752,7 @@ GameObject:
   - component: {fileID: 1741350087464094757}
   - component: {fileID: 2167492059219374193}
   - component: {fileID: 1081949509104368441}
+  - component: {fileID: 1323950504490976228}
   m_Layer: 5
   m_Name: LevelFourButton
   m_TagString: Untagged
@@ -831,6 +874,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9128e41af468f4387ac745ef7e79deb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1323950504490976228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3855577978641037393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &4800916457952743637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,11 +1129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadingTime: 1
-  btnLevelOne: {fileID: 7172106100576569722}
-  btnLevelTwo: {fileID: 3225493651902248076}
-  btnLevelThree: {fileID: 4743376299613188264}
-  btnLevelFour: {fileID: 2167492059219374193}
-  btnLevelFive: {fileID: 3781997695450614695}
 --- !u!1 &6844637479161818448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,6 +1142,7 @@ GameObject:
   - component: {fileID: 7636623983722226965}
   - component: {fileID: 7172106100576569722}
   - component: {fileID: 6995816653096721781}
+  - component: {fileID: 4954507129823245540}
   m_Layer: 5
   m_Name: LevelOneButton
   m_TagString: Untagged
@@ -1212,6 +1264,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9128e41af468f4387ac745ef7e79deb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4954507129823245540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844637479161818448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &7241398706323888278
 GameObject:
   m_ObjectHideFlags: 0

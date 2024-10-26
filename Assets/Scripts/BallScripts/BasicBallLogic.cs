@@ -38,7 +38,7 @@ public class BasicBallLogic : MonoBehaviour
     private Vector3 jumpForce;
     float g = 9.81f; // 重力加速度
 
-
+    //由于重写状态机是不能通过行为脚本实现对应的逻辑的，因此只能在输入读取的时候进行音效的播放；
 
 
     public bool ifPipeEnterUnlocked = false;
@@ -50,6 +50,7 @@ public class BasicBallLogic : MonoBehaviour
 
     private Animator animatorNowControlled;
 
+    private bool jumpSoundLock = true;
 
     private Rigidbody2D Rigidbody { get; set; }
     //[SerializeField]
@@ -59,6 +60,7 @@ public class BasicBallLogic : MonoBehaviour
 
     private void Awake()
     {
+        jumpSoundLock = true;
         Rigidbody = this.GetComponent<Rigidbody2D>();
         //计算对象需要的力的大小；
         jumpForce = new Vector3(0, Rigidbody.mass * Mathf.Sqrt(2 * g * Rigidbody.gravityScale * (height + 1)), 0);
@@ -107,6 +109,16 @@ public class BasicBallLogic : MonoBehaviour
             {
                 animatorNowControlled.SetBool("isIdle", false);
                 animatorNowControlled.SetBool("isMove", true);
+
+                if (Input.GetKeyDown(KeyCode.Space) && ifLand)
+                {
+                    ifLand = false;
+                    animatorNowControlled.SetBool("isLand", false);
+                    animatorNowControlled.SetTrigger("triggerDashJump");
+
+                    Rigidbody.AddForce(jumpForce, ForceMode2D.Impulse);
+                }
+
                 if (Input.GetKey(KeyCode.A))
                 {
                     this.transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -155,12 +167,19 @@ public class BasicBallLogic : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Terrain"))
+        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("MaxSize") || collision.gameObject.CompareTag("MediumSize") || collision.gameObject.CompareTag("MinSize"))
         {
+            if(!jumpSoundLock)
+            {
+                SoundEffectManager.Instance.PlaySoundEffect("Sound/SlimeSound/JumpLand");
+            }
+            jumpSoundLock = false;
             ifLand = true;
             animatorNowControlled.SetBool("isLand", true);
 
         }
+
+   
     }
 
     public void CancelOrResumeJump(bool _ifLand)

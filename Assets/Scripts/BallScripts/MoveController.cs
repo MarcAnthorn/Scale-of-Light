@@ -15,6 +15,9 @@ public class MoveController : MonoBehaviour
     //材质变量
     private Material _material;
 
+    [SerializeField]
+    private Vector3 noteOffset;
+
     //全局唯一的静态变量，用于在特定的场合（如死亡时）取消所有的键盘输入；
     public static bool isInputLockedStatic = false;
 
@@ -43,7 +46,9 @@ public class MoveController : MonoBehaviour
     private void Awake()
     {
         //virtualCamera = this.GetComponent<CinemachineVirtualCamera>();
-      
+        noteOffset = new Vector3(0, 1.2f, 0);
+
+
     }
 
 
@@ -132,6 +137,10 @@ public class MoveController : MonoBehaviour
                     (nowDivideScript as MediumSizeBall).LockDivideOrNot(false);
             }
         }
+
+        //处理切换的时候的切换note生成逻辑：
+        Transform switchNote = PoolManager.Instance.SpawnFromPool("Diamond", nowBallLogicScript.gameObject.transform.position + noteOffset, Quaternion.identity).transform;
+        switchNote.SetParent(nowBallLogicScript.gameObject.transform);
 
     }
 

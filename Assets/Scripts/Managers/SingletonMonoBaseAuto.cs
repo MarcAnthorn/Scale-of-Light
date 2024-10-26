@@ -17,6 +17,7 @@ public class SingletonMonoBaseAuto<T> : MonoBehaviour where T : MonoBehaviour
                 instance = obj.AddComponent<T>();   //挂载并且返回T类型的脚本组件，并被instance引用；
                 DontDestroyOnLoad(obj);             //并且，指定过场景的时候不移除挂载的对象；维护单例模式的唯一性；
             }
+  
             return instance;
         }
     }
