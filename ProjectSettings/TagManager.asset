@@ -8,6 +8,7 @@ TagManager:
   - MaxSize
   - MediumSize
   - MinSize
+  - Wall
   layers:
   - Default
   - TransparentFX
