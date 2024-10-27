@@ -19,6 +19,9 @@ public class MediumSizeBall : BaseDivideBall
     [SerializeField]
     private bool divideLock = false;
 
+    [SerializeField]
+    private Vector3 divideForce;
+
     public void LockDivideOrNot(bool isLock)
     {
         divideLock = isLock;
@@ -96,15 +99,19 @@ public class MediumSizeBall : BaseDivideBall
                // 禁用这两个层之间的力的作用（仍然进行碰撞检测）
                Physics2D.IgnoreLayerCollision(layerPlayer, layerPlayer, true);
 
-               childLeft.transform.LeanMoveX(this.transform.position.x - 1f, 0.2f);
-               childRight.transform.LeanMoveX(this.transform.position.x + 1f, 0.2f);
-               LeanTween.delayedCall( 0.2f, () =>
+               //由于强制位移可能会导致穿模，因此优化为施加力的方式进行分裂推动；
+               Rigidbody2D left = childLeft.GetComponent<Rigidbody2D>();
+               left.AddForce(-divideForce, ForceMode2D.Impulse);
+
+               Rigidbody2D right = childRight.GetComponent<Rigidbody2D>();
+               right.AddForce(divideForce, ForceMode2D.Impulse);
+               LeanTween.delayedCall( 0.12f, () =>
                {
                    Physics2D.IgnoreLayerCollision(layerPlayer, layerPlayer, false);
+                   left.velocity = new Vector2(0, 0);
+                   right.velocity = new Vector2(0, 0);
                });
 
-               childLeft.transform.LeanMoveX(this.transform.position.x - 0.7f, 0.2f);
-               childRight.transform.LeanMoveX(this.transform.position.x + 0.7f, 0.2f);
                EventHub.Instance.EventTrigger<Transform>("SwitchControlled", childRight.transform);
                PoolManager.Instance.ReturnToPool("MaxSizeBall", this.gameObject);
 

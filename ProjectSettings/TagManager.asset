@@ -9,6 +9,7 @@ TagManager:
   - MediumSize
   - MinSize
   - Wall
+  - SideWall
   layers:
   - Default
   - TransparentFX

@@ -71,7 +71,9 @@ public class ButtonInteract : MonoBehaviour
                         EventHub.Instance.EventTrigger("SettingPanelPopUp");
                         break;
                     case "QuitButton":
-                        Debug.Log("QuitButtonlogic executed");
+
+                        PanelEffects.Instance.PanelPopUp(UIManager.Instance.ShowPanel<QuitGameConfirmPanel>().gameObject.transform);
+
                         break;
                     case "AboutButton":
                         SoundEffectManager.Instance.PlaySoundEffect("Sound/PanelRevealVer1");

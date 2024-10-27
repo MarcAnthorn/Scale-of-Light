@@ -2409,6 +2409,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 24388807359815494, guid: 055d698554eab4b4fab7fb5896ebaba0, type: 3}
+      propertyPath: divideForce.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 24388807359815494, guid: 055d698554eab4b4fab7fb5896ebaba0, type: 3}
+      propertyPath: divideVelocity.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 441749557757012570, guid: 055d698554eab4b4fab7fb5896ebaba0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2015348021266718027, guid: 055d698554eab4b4fab7fb5896ebaba0, type: 3}
       propertyPath: m_Name
       value: MediumSizeBall
@@ -6314,6 +6326,10 @@ PrefabInstance:
     - target: {fileID: 4099009159333967235, guid: be7575a57f45e4d89ad08c4861e85eb1, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099009159333967235, guid: be7575a57f45e4d89ad08c4861e85eb1, type: 3}
+      propertyPath: m_TagString
+      value: SideWall
       objectReference: {fileID: 0}
     - target: {fileID: 5718938271316988072, guid: be7575a57f45e4d89ad08c4861e85eb1, type: 3}
       propertyPath: m_LocalPosition.x

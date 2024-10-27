@@ -99,6 +99,7 @@ MonoBehaviour:
   gravity: 6
   virtualCamera: {fileID: 0}
   divideLock: 0
+  divideForce: {x: 1, y: 0, z: 0}
 --- !u!61 &9094447749835941974
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -217,7 +218,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: -4547461299076945346, guid: de62f980479224dbe992758d87e393e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

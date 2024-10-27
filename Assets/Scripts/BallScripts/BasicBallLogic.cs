@@ -181,7 +181,6 @@ public class BasicBallLogic : MonoBehaviour
 
    
     }
-
     public void CancelOrResumeJump(bool _ifLand)
     {
         ifLand = _ifLand;
