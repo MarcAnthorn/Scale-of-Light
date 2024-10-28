@@ -33,6 +33,8 @@ public class FloatTrigger : MonoBehaviour
 
         if(collision.gameObject.CompareTag("MinSize"))
         {
+            //浮空特效：（有问题，未显示）
+            PoolManager.Instance.SpawnFromPool("Effect/StoneEff", this.transform.position, Quaternion.identity);
             //通过加锁的方式，防止多个小球进入漂浮机关之后能够将通关check重复增加；
             //加锁就是为了让一个漂浮机关只有一个让pointcheck增加的机会；
             if(!isCheckLocked)

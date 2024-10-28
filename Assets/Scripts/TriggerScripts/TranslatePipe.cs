@@ -150,6 +150,10 @@ public class TranslatePipe : BasePipe
             {
                 nowControlledBall = SwitchManager.Instance.AddNewMinToQueue(spawnPoint.position);
                 EventHub.Instance.EventTrigger<Transform>("SwitchControlled", nowControlledBall.transform);
+                LeanTween.delayedCall(0.3f, () =>
+                {
+                    EventHub.Instance.EventTrigger("Death");
+                });
             });
        }
 
