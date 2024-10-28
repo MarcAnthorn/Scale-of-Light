@@ -11,7 +11,7 @@ public class FloatNoteTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MinSize"))
         {
-            PoolManager.Instance.SpawnFromPool("FloatNote").gameObject.transform.SetParent(basePoint);
+            PoolManager.Instance.SpawnFromPool("FloatNote", basePoint.position, Quaternion.identity).gameObject.transform.SetParent(basePoint);
 
         }
     }

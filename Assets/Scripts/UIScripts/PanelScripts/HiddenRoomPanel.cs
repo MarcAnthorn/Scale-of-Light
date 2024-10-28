@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GuidePanel : BasePanel
+public class HiddenRoomPanel : BasePanel
 {
     protected override void Init()
     {
-
+        
     }
 
-
+   
 }
-

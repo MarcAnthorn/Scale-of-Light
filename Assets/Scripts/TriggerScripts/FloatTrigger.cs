@@ -28,19 +28,22 @@ public class FloatTrigger : MonoBehaviour
 
     private BasicBallLogic nowBallScript;
 
+    private GameObject floatEffect;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if(collision.gameObject.CompareTag("MinSize"))
         {
-            //浮空特效：（有问题，未显示）
-            PoolManager.Instance.SpawnFromPool("Effect/StoneEff", this.transform.position, Quaternion.identity);
+
             //通过加锁的方式，防止多个小球进入漂浮机关之后能够将通关check重复增加；
             //加锁就是为了让一个漂浮机关只有一个让pointcheck增加的机会；
             if(!isCheckLocked)
             {
                 isCheckLocked = true;
                 EventHub.Instance.EventTrigger("PointChecked");
+                //浮空特效：
+                floatEffect = PoolManager.Instance.SpawnFromPool("Effect/StoneEff", this.transform.position, Quaternion.identity);
             }
             //禁用当前的对象跳跃；
             nowBallScript = collision.GetComponent<BasicBallLogic>();
@@ -91,6 +94,7 @@ public class FloatTrigger : MonoBehaviour
                 isFall = true;
                 EventHub.Instance.EventTrigger("PointUnchecked");
                 isCheckLocked = false;
+                PoolManager.Instance.ReturnToPool(floatEffect.gameObject.name, floatEffect);
             }
         }
     }
