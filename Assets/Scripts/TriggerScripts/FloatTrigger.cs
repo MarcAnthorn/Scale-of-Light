@@ -51,6 +51,9 @@ public class FloatTrigger : MonoBehaviour
 
             //触发机关动画
 
+            //触发机关音效：
+            SoundEffectManager.Instance.PlaySoundEffect("Sound/FloatTriggerSoundEffect");
+
             //记录目标高度：
             targetYValue = floatTarget.position.y;
             collision.transform.LeanMoveLocalY(targetYValue, floatTime).setEase(LeanTweenType.easeInQuart)
