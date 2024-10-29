@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = this.GetComponent<Animator>();
+    }
     private void OnEnable()
     {
         EventHub.Instance.AddEventListener("DoorOpen", DoorOpen);
@@ -20,7 +27,9 @@ public class DoorTrigger : MonoBehaviour
     {
         //播放机关门的开启动画
         Debug.Log("The Door Is Opened");
-        this.gameObject.SetActive(false);
+        animator.SetTrigger("TriggerOpen");
+
+
     }
 
 
@@ -31,6 +40,6 @@ public class DoorTrigger : MonoBehaviour
     private void DoorClose()
     {
         Debug.Log("The Door Is Closed");
-        //this.gameObject.SetActive(true);
+        animator.SetTrigger("TriggerClose");
     }
 }

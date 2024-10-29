@@ -36,7 +36,8 @@ public class TranslatePipe : BasePipe
         //{
         //    PoolManager.Instance.ReturnToPool("FakeLookAt", fakeLookAt.gameObject);
         //});
-        
+
+        SoundEffectManager.Instance.PlaySoundEffect("Sound/Teleport");
         if(ball.CompareTag("MaxSize"))
             BaseBallEntry(ballTransform);
         else if(ball.CompareTag("MinSize") || ball.CompareTag("MediumSize"))
