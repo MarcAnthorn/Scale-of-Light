@@ -39,8 +39,10 @@ public class LoadSceneButton : MonoBehaviour
 
     public void ConfirmScene()
     {
+        SoundEffectManager.Instance.StopMusic();
         switch (btnSelf.name)
         {
+          
             case "LevelOneButton":
                 LoadSceneManager.Instance.LoadSceneAsync("GameScene1");
                 break;

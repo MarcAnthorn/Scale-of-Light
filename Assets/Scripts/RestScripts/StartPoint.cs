@@ -15,5 +15,6 @@ public class StartPoint : MonoBehaviour
     {
         Debug.Log("ShowPanel Executed");
         UIManager.Instance.ShowPanel<BeginPanel>().gameObject.transform.SetParent(behindTransform);
+        SoundEffectManager.Instance.PlayMusic("Sound/Bgm");
     }
 }
