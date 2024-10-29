@@ -6,10 +6,19 @@ using UnityEngine;
 public class ResumeVolume : MonoBehaviour
 {
     private CircleCollider2D cc;
+    [SerializeField]
+    [Range(0, 3)]
+    private float floatDistance;
+
+    [SerializeField]
+    [Range(0, 1)]
+    private float floatTime;
     private void Awake()
     {
         cc = this.GetComponent<CircleCollider2D>();
         cc.isTrigger = true;
+        LeanTween.moveLocalY(gameObject, this.transform.position.y + floatDistance, floatTime).setEaseInOutSine()
+            .setLoopPingPong();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

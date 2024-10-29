@@ -77,7 +77,7 @@ public class ButtonInteract : MonoBehaviour
                         break;
                     case "AboutButton":
                         SoundEffectManager.Instance.PlaySoundEffect("Sound/PanelRevealVer1");
-                        Debug.Log("AboutButtonlogic executed");
+                        PanelEffects.Instance.PanelPopUp(UIManager.Instance.ShowPanel<AboutPanel>().gameObject.transform);
                         break;
                     default:
                         break;
