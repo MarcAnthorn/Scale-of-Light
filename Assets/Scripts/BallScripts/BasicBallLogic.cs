@@ -48,9 +48,12 @@ public class BasicBallLogic : MonoBehaviour
     private int gravity;
     public int Gravity => gravity;
 
+
     private Animator animatorNowControlled;
 
     private bool jumpSoundLock = true;
+
+    private bool jumpForceLock = false;
 
     private Rigidbody2D Rigidbody { get; set; }
     //[SerializeField]
@@ -112,11 +115,17 @@ public class BasicBallLogic : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Space) && ifLand)
                 {
+
                     ifLand = false;
                     animatorNowControlled.SetBool("isLand", false);
                     animatorNowControlled.SetTrigger("triggerDashJump");
-
                     Rigidbody.AddForce(jumpForce, ForceMode2D.Impulse);
+                    jumpForceLock = true;
+                    LeanTween.delayedCall(0.2f, () =>
+                    {
+                        jumpForceLock = false;
+                    });
+
                 }
 
                 if (Input.GetKey(KeyCode.A))
@@ -133,11 +142,18 @@ public class BasicBallLogic : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && ifLand)
             {
+
+                //起跳之后如果碰见球，isLand就会重置，因此需要注意这点：
                 ifLand = false;
                 animatorNowControlled.SetBool("isLand", false);
                 animatorNowControlled.SetTrigger("triggerJump");
-
                 Rigidbody.AddForce(jumpForce, ForceMode2D.Impulse);
+                jumpForceLock = true;
+                LeanTween.delayedCall(0.2f, () =>
+                {
+                    jumpForceLock = false;
+                });
+
             }
 
             //执行进管道逻辑；
@@ -174,7 +190,8 @@ public class BasicBallLogic : MonoBehaviour
                 SoundEffectManager.Instance.PlaySoundEffect("Sound/SlimeSound/JumpLand");
             }
             jumpSoundLock = false;
-            ifLand = true;
+            if(!jumpForceLock)
+                ifLand = true;
             animatorNowControlled.SetBool("isLand", true);
 
         }

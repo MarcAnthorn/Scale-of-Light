@@ -27,7 +27,8 @@ public class DoorTrigger : MonoBehaviour
     {
         //播放机关门的开启动画
         Debug.Log("The Door Is Opened");
-        animator.SetTrigger("TriggerOpen");
+        animator.SetBool("isOpen", true);
+        animator.SetBool("isClose", false);
 
 
     }
@@ -40,6 +41,7 @@ public class DoorTrigger : MonoBehaviour
     private void DoorClose()
     {
         Debug.Log("The Door Is Closed");
-        animator.SetTrigger("TriggerClose");
+        animator.SetBool("isOpen", false);
+        animator.SetBool("isClose", true);
     }
 }
