@@ -660,6 +660,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloatStone2
       objectReference: {fileID: 0}
+    - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1899,6 +1915,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 11, y: 2, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 3
+      m_TileSpriteIndex: 3
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 14, y: 2, z: 0}
     second:
       serializedVersion: 2
@@ -2017,6 +2043,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 849f5b9073da370489b573691b0cae3e, type: 2}
   - m_RefCount: 7
     m_Data: {fileID: 11400000, guid: c1c28aeb9191d32478076158988025df, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: f1d20e7f2497a430984e91985e1dfca5, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 10
     m_Data: {fileID: -659263969, guid: e5b483fdc62a1a445b4517cbc6a97c5b, type: 3}
@@ -2024,8 +2052,10 @@ Tilemap:
     m_Data: {fileID: 490173239, guid: e5b483fdc62a1a445b4517cbc6a97c5b, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: -200274041, guid: e5b483fdc62a1a445b4517cbc6a97c5b, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -1478659900, guid: 672be0e6a48804bb8bfca444315badd3, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 24
+  - m_RefCount: 25
     m_Data:
       e00: 1
       e01: 0
@@ -2044,7 +2074,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 24
+  - m_RefCount: 25
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -3554,6 +3584,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloatStone3
       objectReference: {fileID: 0}
+    - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3659,7 +3705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 740543927295180164, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 740543927295180164, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3706,8 +3752,12 @@ PrefabInstance:
       value: FloatStone1
       objectReference: {fileID: 0}
     - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
       propertyPath: m_Color.b
-      value: 0.9264436
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
       propertyPath: m_Color.g
@@ -3715,7 +3765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4577417414977518533, guid: 6ab149df969384dfab4f2cc49dd9a435, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
