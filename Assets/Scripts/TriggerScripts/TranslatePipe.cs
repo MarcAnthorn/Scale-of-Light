@@ -27,7 +27,7 @@ public class TranslatePipe : BasePipe
     protected override void PipeTriggerEnter(Transform ballTransform)
     {
         GameObject ball = ballTransform.gameObject;
-
+        Debug.Log("Pipe Enter Triggered");
 
         //动画播放完毕之后再移动镜头
         //fakeLookAt = PoolManager.Instance.SpawnFromPool("FakeLookAt", ballTransform.position, Quaternion.identity).transform;
@@ -50,7 +50,7 @@ public class TranslatePipe : BasePipe
     protected override void PipeNotification()
     {
         //只有当进入了某个管道的提示范围，才会让该管道监听进入管道事件；
-        EventHub.Instance.AddEventListener<Transform>("PipeTriggerEnter", PipeTriggerEnter);
+        EventHub.Instance.AddEventListenerNotMultuple<Transform>("PipeTriggerEnter", PipeTriggerEnter);
 
         if (note != null)
             return;
@@ -131,6 +131,7 @@ public class TranslatePipe : BasePipe
 
     private void BaseBallEntry(Transform ballTransform)
     {
+        Debug.LogError("大球进入了");
         //大球进管道动画
         PoolManager.Instance.ReturnToPool("MaxSizeBall",ballTransform.gameObject);
 
@@ -143,8 +144,9 @@ public class TranslatePipe : BasePipe
 
     private void ChildBallEntry(Transform ballTransform)
     {
+        Debug.LogError("小球进入了");
         //小球进管道动画
-       if(ballTransform.gameObject.CompareTag("MinSize"))
+        if (ballTransform.gameObject.CompareTag("MinSize"))
        {
             PoolManager.Instance.ReturnToPool(ballTransform.gameObject.name, ballTransform.gameObject);
             LeanTween.delayedCall(spawnDelayTime, () =>

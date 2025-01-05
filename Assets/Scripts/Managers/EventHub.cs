@@ -62,6 +62,8 @@ public class EventHub : SingletonBaseManager<EventHub>
         }
     }
 
+
+    //支持多播委托的事件订阅；
     public void AddEventListener<T>(string eventName, UnityAction<T> function)
     {
         if (eventDictionary.ContainsKey(eventName))
@@ -71,6 +73,20 @@ public class EventHub : SingletonBaseManager<EventHub>
             eventDictionary.Add(eventName, new EventInfo<T>(function));     //里氏替换父装载子类实例
         }
     }
+
+     //重载：不支持多播委托的事件订阅；
+    public void AddEventListenerNotMultuple<T>(string eventName, UnityAction<T> function)
+    {
+        if (eventDictionary.ContainsKey(eventName) && (eventDictionary[eventName] as EventInfo<T>).action_ == null)
+            (eventDictionary[eventName] as EventInfo<T>).action_ += function;  //as父转子实现子类成员委托调用
+        else
+        {
+            eventDictionary.Add(eventName, new EventInfo<T>(function));     //里氏替换父装载子类实例
+        }
+    }
+
+
+
 
     public void RemoveEventListener<T>(string eventName, UnityAction<T> function)
     {
